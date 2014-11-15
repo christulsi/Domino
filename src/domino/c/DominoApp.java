@@ -5,13 +5,6 @@
  */
 package domino.c;
 
-import domino.m.Dominoes;
-import domino.v.UI;
-
-
-
-
-
 
 /**
  *
@@ -23,11 +16,9 @@ public class DominoApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        //Dominoes ss = new Dominoes();
-        //ss.createPack
-       GameEngine ss =new GameEngine();
-       ss.share();
+        
+       GameEngine game = new GameEngine();
+       game.start();
         
     }
 

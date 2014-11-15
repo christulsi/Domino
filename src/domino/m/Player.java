@@ -14,33 +14,51 @@ import java.util.ArrayList;
 public class Player {
 
     private int wins;
-    private int loses;
+    private int gamesplayed = 0;
+    private int points;
     private ArrayList<Domino> hand = new ArrayList<>();
     private String position;
+    private int NumberOfDomino = 7;
     
     public Player(){
     	
+    	setPoints(0);
+    	setNumberOfDomino(7);
+    	setGamesPlayed(getGamesPlayed()+1);
     }
 
     public Player(String position) {
-        
-        this.position = position;
+    	
+    	setPoints(0);
+    	setNumberOfDomino(7);
+    	setGamesPlayed(getGamesPlayed()+1);
+        setPosition(position);
     }
 
-    public void play() {
-
-    }
-
-    public void pickUp() {
-
+    public Domino play(int left, int right){
+    	
+    	Domino temp=null;
+    	
+    	for(Domino domino:hand){
+    		
+    		if(domino.getTop()==left || domino.getBottom()==left ||domino.getTop()==right ||domino.getBottom()==right){
+    			
+    			temp = domino;
+    			hand.remove(domino);
+    			setNumberOfDomino(hand.size());		
+    		}
+    		return temp;
+    	}
+    			
+    	return null;
     }
 
     public int getWins() {
         return wins;
     }
 
-    public int getLost() {
-        return loses;
+    public int getGamesPlayed() {
+        return gamesplayed;
     }
 
     public String getPosition() {
@@ -55,8 +73,8 @@ public class Player {
         this.wins = wins;
     }
 
-    public void setLost(int loses) {
-        this.loses = loses;
+    public void setGamesPlayed(int loses) {
+        this.gamesplayed = loses;
     }
 
     public void setPosition(String position) {
@@ -70,5 +88,21 @@ public class Player {
         }
 
     }
+
+	public int getNumberOfDomino() {
+		return NumberOfDomino;
+	}
+
+	public void setNumberOfDomino(int numberOfDomino) {
+		NumberOfDomino = numberOfDomino;
+	}
+
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points) {
+		this.points = points;
+	}
 
 }
