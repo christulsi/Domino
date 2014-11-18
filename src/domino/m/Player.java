@@ -20,17 +20,21 @@ public class Player {
     private String position;
     private int NumberOfDomino = 7;
     
+    {
+        //initialiser - runs before a constructor when instantiating
+        //useful when there are multiple constructors
+        setPoints(0);
+    	setNumberOfDomino(7);
+    }
+    
     public Player(){
     	
-    	setPoints(0);
-    	setNumberOfDomino(7);
+    	
     	setGamesPlayed(getGamesPlayed()+1);
     }
 
     public Player(String position) {
     	
-    	setPoints(0);
-    	setNumberOfDomino(7);
     	setGamesPlayed(getGamesPlayed()+1);
         setPosition(position);
     }
@@ -41,12 +45,18 @@ public class Player {
     	
     	for(Domino domino:hand){
     		
-    		if(domino.getTop()==left || domino.getBottom()==left ||domino.getTop()==right ||domino.getBottom()==right){
+            if(domino.getTop() == 6 && domino.getBottom() == 6){
+                
+                temp =domino;
+                hand.remove(domino);
+                
+            }else if(domino.getTop() == left || domino.getBottom() == left ||domino.getTop() == right ||domino.getBottom() == right){
     			
     			temp = domino;
     			hand.remove(domino);
-    			setNumberOfDomino(hand.size());		
+    					
     		}
+            setNumberOfDomino(hand.size());
     		return temp;
     	}
     			

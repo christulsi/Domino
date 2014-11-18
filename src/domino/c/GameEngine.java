@@ -16,16 +16,16 @@ import domino.m.Player;
  */
 public class GameEngine {
 
-	Board board = new Board();
-    Player player1 = new Player("south");
-    Player player2 = new Player("east");
-    Player player3 = new Player("north");
-    Player player4 = new Player("west");
-    Player currentPlayer = new Player();
-    Player winner = new Player();
-    int rap = 0;
-
-    Dominoes pack = new Dominoes();//An arraylist of dominoes
+	private Board board = new Board();
+    private Player player1 = new Player("south");
+    private Player player2 = new ComputerPlayer("east");
+    private Player player3 = new ComputerPlayer("north");
+    private Player player4 = new ComputerPlayer("west");
+    private Player currentPlayer = new Player();
+    private Player winner = new Player();
+    private int rap = 0;
+    private UI ui = new UI();
+    private Dominoes pack = new Dominoes();//An arraylist of dominoes
 
     public GameEngine() {
     }
@@ -35,8 +35,13 @@ public class GameEngine {
     	share();
     	currentPlayer = playFirst();
     	
+        
+        
     	while(true){
         	
+            ui.setList(Player1.getHand());
+            ui.callRepaint();
+            
         	if(board.collectDomino(currentPlayer.play(board.getLeft(), board.getRight()))){//left right      		
         		
         		rap = 0; //set rap count to zero 

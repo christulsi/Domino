@@ -21,41 +21,35 @@ import javax.swing.*;
  * @author private
  */
 public class UI extends JFrame {
+    
+    private Screen sc = new Screen();
+    private ArrayList<Domino> list = new ArrayList<>();
+    
+    public UI(){
+         super("Domino Game");
 
-public UI(){
- super("Domino Game");
- /*
- String location = "../Dominoes/6-6.png";
-        InputStream imgStream = getClass().getResourceAsStream(location);
-        BufferedImage image_setter = null;
-        try {
-            image_setter = ImageIO.read(imgStream);
-        } catch (IOException ex) {
-            Logger.getLogger(UI.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        ImageIcon background_image = new ImageIcon(image_setter);
-        setContentPane(new JLabel(background_image));
-*/
- Domino a = new Domino(6, 6, "../Dominoes/6-6.png");
- a.setIcon(new ImageIcon(getClass().getResource("../Dominoes/6-6.png")));
- add(a);
- 
- 
- 
- 
-setLayout(new FlowLayout());
-setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-setSize(1400,1400);
-setVisible(true);
-
-setLocationRelativeTo(null);
-setResizable(false);
-}    
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(1400,1400);
+        setVisible(true);
+        setLocationRelativeTo(null);
+        setResizable(false);
+        
+        add(sc);
+    }    
     
+    public void callrepaint(){
+        
+        sc.repaint();
+    }
+         
+    public void setList(ArrayList<Domino> list){
+        
+        this.list = list;
+    }
     
-    
-    
-    
-    
+    public ArrayList<Domino> getList(){
+        
+        return list;
+    }
     
 }

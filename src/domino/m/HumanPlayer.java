@@ -13,16 +13,15 @@ package domino.m;
 public class HumanPlayer extends Player{
     
 	public HumanPlayer(String position){
+        
         super(position);
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
+    @Overide
+    public Domino play(ArrayList<Domino> hand){
+        
+        return hand.get(0);
+    }    
+        
     
 }
